@@ -18,7 +18,7 @@ function App() {
               <span id="logo-O1">O</span>
               <span id="logo-L">L</span>
               <span id="logo-O2">O</span>
-              <span id="logo-O2">R</span>
+              <span id="logo-R">R</span>
             </div>
           </div>
 
