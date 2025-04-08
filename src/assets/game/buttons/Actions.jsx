@@ -1,8 +1,8 @@
 const Actions=()=> {
     return (
-        <div class="buttons">
-            <div class="button a">A</div>
-            <div class="button b">B</div>
+        <div className="buttons">
+            <div className="button a">A</div>
+            <div className="button b">B</div>
         </div>
     );
   }

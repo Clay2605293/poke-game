@@ -1,17 +1,18 @@
-const Dpad=()=> {
+const Dpad = ({ onUp, onDown, onLeft, onRight }) => {
     return (
-        <div class="dpad">
-            <div></div>
-            <div class="dpad-button up"></div>
-            <div></div>
-            <div class="dpad-button left"></div>
-            <div class="dpad-button center"></div>
-            <div class="dpad-button right"></div>
-            <div></div>
-            <div class="dpad-button down"></div>
-            <div></div>
-        </div>
+      <div className="dpad">
+        <div></div>
+        <div className="dpad-button up" onClick={onUp}></div>
+        <div></div>
+        <div className="dpad-button left" onClick={onLeft}></div>
+        <div className="dpad-button center"></div>
+        <div className="dpad-button right" onClick={onRight}></div>
+        <div></div>
+        <div className="dpad-button down" onClick={onDown}></div>
+        <div></div>
+      </div>
     );
-  }
+  };
   
   export default Dpad;
+  
