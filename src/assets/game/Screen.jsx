@@ -1,9 +1,37 @@
 import './styles.css';
-const Screen = ({ pokemones, selectedIndex }) => {
+import BattleScreen from './BattleScreen';
+
+const Screen = ({
+  pokemones,
+  selectedIndex,
+  showBattle,
+  selectedPokemon,
+  allPokemons,
+  onBattleEnd,
+  moves,
+  selectedMoveIndex,
+  onBattleUp,
+  onBattleDown,
+  onBattleA,
+  setBattleAttack,
+}) => {
+  const isValidPlayer = selectedPokemon && selectedPokemon.stats;
+
   return (
     <div className="screen-border">
       <div className="screen">
-        {pokemones.length === 0 ? (
+        {showBattle && isValidPlayer ? (
+          <BattleScreen
+            player={selectedPokemon}
+            allPokemons={allPokemons}
+            onBattleEnd={onBattleEnd}
+            moves={moves}
+            selectedMoveIndex={selectedMoveIndex}
+            onBattleUp={onBattleUp}
+            onBattleDown={onBattleDown}
+            setBattleAttack={setBattleAttack}
+          />
+        ) : pokemones.length === 0 ? (
           <p>Loading...</p>
         ) : (
           <div className="pokemon-grid">
@@ -19,7 +47,7 @@ const Screen = ({ pokemones, selectedIndex }) => {
                   alt={pokemon.name}
                   className="pokemon-sprite"
                 />
-                
+                <span className="pokemon-name">{pokemon.name}</span>
               </div>
             ))}
           </div>
@@ -39,5 +67,3 @@ const Screen = ({ pokemones, selectedIndex }) => {
 };
 
 export default Screen;
-
-
