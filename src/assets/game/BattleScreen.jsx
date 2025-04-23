@@ -22,6 +22,8 @@ const BattleScreen = ({
   const [battleLog, setBattleLog] = useState([]);
   const [logStep, setLogStep] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [battleEnded, setBattleEnded] = useState(false);
+
 
   const handleAttack = () => {
     if (isProcessing || !enemy) return;
@@ -69,9 +71,10 @@ const BattleScreen = ({
           setIsProcessing(false);
 
           if (winnerMessage) {
+            setBattleEnded(true);
             setTimeout(() => {
               onBattleEnd();
-            }, 2000);
+            }, 1000);
           }
 
           return prev;
@@ -127,7 +130,7 @@ const BattleScreen = ({
             <div
               className="hp-fill"
               style={{
-                width: `${(playerHP / player.stats[0].base_stat) * 100}%`,
+                  width: `${(playerHP / player.stats[0].base_stat) * 100}%`,
               }}
             ></div>
           </div>
@@ -135,10 +138,10 @@ const BattleScreen = ({
       </div>
 
       <div className="text-zone">
-        {isProcessing ? (
-          <p className="battle-text">{battleLog[logStep]}</p>
-        ) : (
-          <ul className="move-list">
+        {isProcessing || battleEnded ? (
+            <p className="battle-text">{battleLog[logStep]}</p>
+          ) : (
+            <ul className="move-list">
             {moves.map((move, index) => (
               <li
                 key={move}
